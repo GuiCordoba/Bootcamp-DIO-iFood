@@ -49,6 +49,19 @@ def extrato(saldo, /, *, extrato):
     print(f"\nSaldo: R$ {saldo:.2f}")
     print("-------------------------------")
 
+def criar_usuario(usuarios):
+    cpf = input("Insira o CPF do usuário (somente numeros): ")
+    nome = input("Insira o nome completo do usuário: ")
+    data_nascimento = input("Data de nascimento do usuário (dd-mm-aaaa): ")
+    endereco = input("Endereço do usuário (logradouro, nro - bairro -cidade/sigla estado): ")
+
+    usuarios.append({"nome": nome, "data_nascimento": data_nascimento, "cpf": cpf, "endereco": endereco})
+    print("=== Usuário criado com sucesso ===")
+
+def filtrar_usuario(cpf, usuarios):
+    usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
+    return usuarios_filtrados[0] if usuarios_filtrados else none
+
 def main():
     LIMITE_SAQUES = 3
     AGENCIA = "0001"
