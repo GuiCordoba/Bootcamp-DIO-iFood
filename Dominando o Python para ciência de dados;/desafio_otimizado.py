@@ -14,15 +14,15 @@ def menu():
     -->'''
     return input(textwrap.dedent(menu))
 
-def depositar(saldo, valor, extrato, /):
+def depositar(saldo, valor, extrato, /): #Argumentos passado apenas por posição
     if valor > 0:
         saldo = + valor
-        extrato += f"Depósito: R${valor:.2f}\n"
+        extrato += f"Depósito:\t R${valor:.2f}\n"
         print("=== Operação realizada com sucesso ===")
     else:
         print("!!! ERRO. Valor inválido !!!")
 
-def sacar(*, saldo, valor, extrato, limite, numero_saque, limite_saques):
+def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):  #Argumentos passado apenas por nome
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
     excedeu_saques = numero_saques >= limite_saques
@@ -38,12 +38,13 @@ def sacar(*, saldo, valor, extrato, limite, numero_saque, limite_saques):
 
     elif valor > 0:
         saldo -= valor
-        extrato += f"Saque: R${valor:.2f}\n"
+        extrato += f"Saque:\t\t R${valor:.2f}\n"
         numero_saques += 1
     else:
         print("!!!ERRO. Valor informado inválido!!!")
+    return saldo, extrato
 
-def extrato(saldo, /, *, extrato):
+def exibir_extrato(saldo, /, *, extrato):  #Argumentos passado por posição e nome
     print("\n------------EXTRATO------------")
     print("Não foram realizados movimentações." if not extrato else extrato)
     print(f"\nSaldo: R$ {saldo:.2f}")
@@ -88,6 +89,8 @@ def listar_contas(contas):
         print("=" * 100)
         print(textwrap.dedent(linha))
 
+
+
 def main():
     LIMITE_SAQUES = 3
     AGENCIA = "0001"
@@ -104,10 +107,20 @@ def main():
         opcao = int(menu())
 
         if opcao == 1:
+            valor = float(input("Insira o valor para depósito: R$"))
+            saldo, extrato = depositar(saldo, valor, extrato)
 
         elif opcao == 2:
+            valor = float(input("Insira o valor para saque: R$"))
+            saldo, extrato = sacar(saldo = saldo,
+                valor = valor,
+                extrato = extrato,
+                limite = limite, 
+                numero_saques = numero_saques, 
+                limite_saques = LIMITE_SAQUES)
 
         elif opcao == 3:
+            exibir_extrato(saldo, extrato = extrato)
 
         elif opcao == 4:
 
@@ -119,10 +132,14 @@ def main():
                 numero_conta += 1
             
         elif opcao == 6:
+            listar_contas(contas)
         
         elif opcao == 7:
+            criar_usuario(usuarios)
 
         elif opcao == 8:
-        
+            break
         else:
+            print(">>>Opção invalida. Tente novamente<<<")
 
+main()
