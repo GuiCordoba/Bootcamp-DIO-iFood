@@ -9,8 +9,9 @@ def menu():
     [4] Alterar Limite de Saque
     [5] Nova Conta
     [6] Listar Contas
-    [7] Novo Usúario   
-    [8] Sair;
+    [7] Novo Usúario  
+    [8] Excluir conta
+    [9] Sair;
     -->'''
     return input(textwrap.dedent(menu))
 
@@ -88,7 +89,7 @@ def listar_contas(contas):
             C/C:\t\t{conta['numero_conta']}
             Titular:\t{conta['usuario']['nome']}
         """
-        print("=" * 100)
+        print("=" * 15)
         print(textwrap.dedent(linha))
 
 def alterar_limite_saque(novo_limite, /, *, limite):
@@ -98,6 +99,14 @@ def alterar_limite_saque(novo_limite, /, *, limite):
         print(f"\nNovo limite: R${limite:.2f}")
     else:
         print("!!! ERRO. Valor informado inválido!!!")
+
+def excluir_conta(numero_conta_del, contas):
+   for conta in contas:
+        if conta['numero_conta'] == numero_conta_del:
+            contas.remove(conta)
+            print(">>> Conta excluída com sucesso <<<")
+            return
+        print("!!! Erro. Conta inválida !!!")
 
 def main():
     LIMITE_SAQUES = 3
@@ -149,6 +158,10 @@ def main():
             criar_usuario(usuarios)
 
         elif opcao == 8:
+            numero_conta_del = int(input("Insira o numero da conta a ser deletada: "))
+            excluir_conta(numero_conta_del, contas)
+
+        elif opcao == 9:
             break
         else:
             print(">>>Opção invalida. Tente novamente<<<")
