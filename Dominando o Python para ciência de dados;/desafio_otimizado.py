@@ -92,7 +92,7 @@ def listar_contas(contas):
         print("=" * 15)
         print(textwrap.dedent(linha))
 
-def alterar_limite_saque(novo_limite, /, *, limite):
+def alterar_limite_saque(novo_limite, limite):
     
     if novo_limite > 0:
         limite = novo_limite
@@ -142,7 +142,7 @@ def main():
         elif opcao == 4:
             print(f"Limite atual: R${limite:.2f}")
             novo_limite = float(input("Insira novo limite: R$"))
-            alterar_limite_saque(novo_limite, limite = limite)
+            alterar_limite_saque(novo_limite, limite)
             
         elif opcao == 5:
             conta = criar_conta(AGENCIA, numero_conta, usuarios)
