@@ -16,11 +16,12 @@ def menu():
 
 def depositar(saldo, valor, extrato, /): #Argumentos passado apenas por posição
     if valor > 0:
-        saldo = + valor
+        saldo += valor
         extrato += f"Depósito:\t R${valor:.2f}\n"
         print("=== Operação realizada com sucesso ===")
     else:
         print("!!! ERRO. Valor inválido !!!")
+    return saldo, extrato
 
 def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):  #Argumentos passado apenas por nome
     excedeu_saldo = valor > saldo
@@ -44,10 +45,11 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):  #Arg
         print("!!!ERRO. Valor informado inválido!!!")
     return saldo, extrato
 
-def exibir_extrato(saldo, /, *, extrato):  #Argumentos passado por posição e nome
+def exibir_extrato(saldo, limite, /, *, extrato):  #Argumentos passado por posição e nome
     print("\n------------EXTRATO------------")
     print("Não foram realizados movimentações." if not extrato else extrato)
     print(f"\nSaldo: R$ {saldo:.2f}")
+    print(f"\nLimite de saque: R$ {limite:.2f}")
     print("-------------------------------")
 
 def criar_usuario(usuarios):
@@ -67,7 +69,7 @@ def criar_usuario(usuarios):
 
 def filtrar_usuario(cpf, usuarios):
     usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
-    return usuarios_filtrados[0] if usuarios_filtrados else none
+    return usuarios_filtrados[0] if usuarios_filtrados else None
 
 def criar_conta(agencia, numero_conta, usuarios):
     cpf = input("Insira o CPF do usuário: ")
@@ -75,7 +77,7 @@ def criar_conta(agencia, numero_conta, usuarios):
 
     if usuario:
         print("=== Conta criada com sucesso ===")
-        return{"agencia": agencia, "numero_conta": numero_conta, "ususario": usuario}
+        return{"agencia": agencia, "numero_conta": numero_conta, "usuario": usuario}
 
     print(">>> Usuário não encontrado <<<")
 
@@ -90,10 +92,10 @@ def listar_contas(contas):
         print(textwrap.dedent(linha))
 
 def alterar_limite_saque(novo_limite, /, *, limite):
-    print(f"Limite atual: R${limite:.2f}")
-    novo_limite = float(input("Insira novo limite: R$"))
+    
     if novo_limite > 0:
         limite = novo_limite
+        print(f"\nNovo limite: R${limite:.2f}")
     else:
         print("!!! ERRO. Valor informado inválido!!!")
 
@@ -126,9 +128,11 @@ def main():
                 limite_saques = LIMITE_SAQUES)
 
         elif opcao == 3:
-            exibir_extrato(saldo, extrato = extrato)
+            exibir_extrato(saldo, limite, extrato = extrato)
 
         elif opcao == 4:
+            print(f"Limite atual: R${limite:.2f}")
+            novo_limite = float(input("Insira novo limite: R$"))
             alterar_limite_saque(novo_limite, limite = limite)
             
         elif opcao == 5:
