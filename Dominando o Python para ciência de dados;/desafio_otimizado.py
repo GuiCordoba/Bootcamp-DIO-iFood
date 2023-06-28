@@ -78,6 +78,16 @@ def criar_conta(agencia, numero_conta, usuarios):
 
     print(">>> Usuário não encontrado <<<")
 
+def listar_contas(contas):
+    for conta in contas:
+        linha = f"""\
+            Agência:\t{conta['agencia']}
+            C/C:\t\t{conta['numero_conta']}
+            Titular:\t{conta['usuario']['nome']}
+        """
+        print("=" * 100)
+        print(textwrap.dedent(linha))
+
 def main():
     LIMITE_SAQUES = 3
     AGENCIA = "0001"
@@ -88,11 +98,31 @@ def main():
     numero_saques = 0
     usuarios = []
     contas = []
+    numero_conta = 1
 
     while True:
         opcao = int(menu())
 
-        if opcao = 1:
+        if opcao == 1:
 
-        elif opcao = 2:
+        elif opcao == 2:
+
+        elif opcao == 3:
+
+        elif opcao == 4:
+
+        elif opcao == 5:
+            conta = criar_conta(AGENCIA, numero_conta, usuarios)
+
+            if conta:
+                contas.append(conta)
+                numero_conta += 1
+            
+        elif opcao == 6:
+        
+        elif opcao == 7:
+
+        elif opcao == 8:
+        
+        else:
 
