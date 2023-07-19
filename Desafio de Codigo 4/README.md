@@ -18,5 +18,6 @@ O programa deve exibir uma única linha contendo o valor total de todos os pedid
 ## Exemplos
 A tabela abaixo apresenta exemplos com alguns dados de entrada e suas respectivas saídas esperadas. Certifique-se de testar seu programa com esses exemplos e com outros casos possíveis.
 
+![Desafio4](https://github.com/GuiCordoba/Bootcamp-DIO-iFood/assets/113614735/3475e3e6-7d65-41d4-a6ac-b6b8bb80f713)
 
 
