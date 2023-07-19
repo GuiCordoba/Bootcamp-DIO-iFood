@@ -1,10 +1,21 @@
-# Bootcamp-DIO-iFood
+## Desafio
 
-📌Repositorio criado para acompanhar minha evolução no Bootcamp Potência Tech powered by iFood | Ciências de Dados com Python, carga horaria de 80 horas.
+Imagine que você está criando um aplicativo de entrega de comida e precisa informar ao usuário o tempo estimado de entrega de um restaurante. A mensagem deve conter o nome do restaurante e o tempo estimado de entrega em minutos.
 
-## Conteudo do Bootcamp:
-- Principios de desenvolvimento de software;
-- Dominando o Python para ciência de dados;
-- Exercite sua Lógica com Desafios de código em Python;
-- Modelagem de dados e projetos lógicos na prática com SQL;
-- Fundamentos e técnicas de Machine Learning.
+## Entrada
+A entrada deverá receber os valores abaixo:
+
+nomeRestaurante (string): o nome do restaurante desejado.
+tempoEstimadoEntrega (number): o tempo estimado de entrega em minutos.
+
+## Saída 
+Deverá retornar uma mensagem (string) informando ao usuário o tempo estimado de entrega do restaurante. Por exemplo, para o restaurante Bar do Zinho com o tempo estimado de entrega sendo 20, imprima:
+
+O restaurante Bar do Zinho entrega em 20 minutos.
+
+Desafio Bônus: Utilize interpolação de strings para formatar sua saída ao invés da concatenação de strings tradicional.
+
+## Exemplos
+A tabela abaixo apresenta exemplos com alguns dados de entrada e suas respectivas saídas esperadas. Certifique-se de testar seu programa com esses exemplos e com outros casos possíveis.
+
+![Desafio1](https://github.com/GuiCordoba/Bootcamp-DIO-iFood/assets/113614735/bad41f72-a0a2-4219-8fe0-9de82eb1ed5f)
