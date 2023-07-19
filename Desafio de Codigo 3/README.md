@@ -36,5 +36,6 @@ O preço final do pedido é R$ 25.00. Seu troco é R$ 5.00.
 ## Exemplos
 A tabela abaixo apresenta exemplos com alguns dados de entrada e suas respectivas saídas esperadas. Certifique-se de testar seu programa com esses exemplos e com outros casos possíveis.
 
-![Desafio2](https://github.com/GuiCordoba/Bootcamp-DIO-iFood/assets/113614735/3ec43173-7f3b-46fc-b231-09530cd594d2)
+![image](https://github.com/GuiCordoba/Bootcamp-DIO-iFood/assets/113614735/32d4ba96-d109-489a-a40b-e2cc8c8fe511)
+
 
